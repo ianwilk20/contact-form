@@ -1,22 +1,25 @@
-# Frontend Mentor - Contact form
+# Frontend Mentor - Contact form solution
 
-![Design preview for the Contact form coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Contact form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this contact form and get it looking as close to the design as possible. Pay particular attention to making this form accessible. Building accessible forms is a key skill for front-end developers. So this is a perfect challenge to practice.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to: 
+Users should be able to:
 
 - Complete the form and see a success toast message upon successful submission
 - Receive form validation messages if:
@@ -27,74 +30,56 @@ Your users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+Desktop:
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+![Desktop initial state](/design/sol-desktop-init.png)
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+![Desktop filled state](/design/sol-desktop-filled.png)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+![Desktop submitted state](/design/sol-desktop-submitted.png)
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+Mobile: 
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+![Mobile initial state](/design/sol-mobile-init.png)
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
 
-## Building your project
+### Links
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+## My process
 
-## Deploying your project
+### Built with
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+### What I learned
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+I learned that even if you put two input's of type radio button in a fieldset it doesn't automatically group them, which means you'll be able to select more than one. To restrict users having one radio button selection at a time you need to give each radio button the same name property, ex. ```name="query-type"```. Providing the same name for multiple radio buttons groups them and restricts users from having more than one radio button selected at once. 
 
-## Create a custom `README.md`
+I learned that if you have text input inside of a form and you mark that field as required a few cool things occur. The browser will handle validation for you, in this case, when the user tries to submit the form, the browser will complain and say that the field is required. To do away with browser validation and handle it yourself you can specify ```novalidate``` on the form element; however, this means that you must handle all validation yourself.
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+I learned that the css pseudo-class ```:has()``` can be used for selecting a child element from parent. In the code, I have an outer div that wraps the "General Inquiry" radio button and the same for the "Support Request" radio button. The purpose of the outer div is to hold the radio button and for styling reasons. When either radio button is clicked the same behaviour styling should be applied to their respective outer div's - they need to have a light green highlight, a green border, and a green radio button. I used ```:has()``` on the outer div and specifed the child radio button in the function parameter. Ex. ```#outer-div:has(> #general-inqury-radio:checked)```. In turn this will apply styling to the outer-div when either of these two radio buttons is selected.
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+I learned how to customize a checkbox using CSS. See Useful resources for more details.
 
-## Submitting your solution
+### Continued development
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+I think the most difficult part of this challenge was making the form look like the attached mockups. The JavaScript for form validation and submission, and the HTML took the least amount of time. For that reason, I think I need to improve my CSS skills.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
 
-## Sharing your solution
+### Useful resources
 
-There are multiple places you can share your solution:
+- [Documentation on the :has() pseudo-class](https://www.w3.org/TR/selectors-4/#) and [Example of :has()](https://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector) -  Both of these resources helped me understand how to use the :has() pseudo-class
+- [How to style a checkbox using CSS](https://sentry.io/answers/how-to-style-a-checkbox-using-css/) - This article was a great resource for how to apply custom styling to a checkbox.
 
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+## Author
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- GitHub - [ianwilk20](https://github.com/ianwilk20)

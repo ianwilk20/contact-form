@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png"
+        />
+        <link rel="stylesheet" href="./index.css" />
+
+        <title>Frontend Mentor | Contact form</title>
+    </head>
+    <body>
+        <main>
+            <div class="content-container">
+                <form id="contact-form" novalidate>
+                    <div class="contact-form-header">
+                        <h1>Contact Us</h1>
+                    </div>
+
+                    <div class="contact-form-inputs">
+                        <div class="side-by-side-input-container">
+                            <div class="input-container">
+                                <label for="contact-first-name"
+                                    >First Name</label
+                                >
+                                <input
+                                    id="first-name"
+                                    type="text"
+                                    autocomplete="given-name"
+                                    required
+                                    minlength="2"
+                                    placeholder="John"
+                                />
+                                <p id="first-name-error"></p>
+                            </div>
+
+                            <div class="input-container">
+                                <label for="contact-last-name">Last Name</label>
+                                <input
+                                    id="last-name"
+                                    type="text"
+                                    autocomplete="family-name"
+                                    required
+                                    aria-minlength="2"
+                                    placeholder="Smith"
+                                />
+                                <p id="last-name-error"></p>
+                            </div>
+                        </div>
+
+                        <div class="input-container">
+                            <label for="contact-email">Email Address</label>
+                            <input
+                                id="email"
+                                type="email"
+                                autocomplete="email"
+                                placeholder="example@address.com"
+                                pattern="[^@\s]+@[^@\s]+\.[^@\s]*"
+                                required
+                            />
+                            <p id="email-error"></p>
+                        </div>
+
+                        <fieldset id="query-type" aria-required="true">
+                            <div class="input-container">
+                                <legend class="query-type">Query Type</legend>
+                                <div class="side-by-side-input-container">
+                                    <div
+                                        id="query-type-general-btn"
+                                        class="radio-button"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="query-type"
+                                            id="query-type-general"
+                                            value="general"
+                                        />
+                                        <label for="query-type-general"
+                                            >General Enquiry</label
+                                        >
+                                    </div>
+                                    <div
+                                        id="query-type-support-btn"
+                                        class="radio-button"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="query-type"
+                                            id="query-type-support"
+                                            value="support"
+                                        />
+                                        <label for="query-type-support"
+                                            >Support Request</label
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="query-type-error"></p>
+                        </fieldset>
+
+                        <div class="input-container">
+                            <label for="contact-message">Message</label>
+                            <textarea
+                                id="message"
+                                type="text"
+                                rows="3"
+                                cols="5"
+                                required
+                                minlength="25"
+                            ></textarea>
+                            <p id="message-error"></p>
+                        </div>
+
+                        <div class="comms-consent-and-error">
+                            <div class="comms-consent-container">
+                                <input
+                                    id="comms-consent"
+                                    type="checkbox"
+                                    required
+                                />
+                                <label for="comms-consent"
+                                    >I consent to being contacted by the
+                                    team</label
+                                >
+                            </div>
+                            <p id="comms-consent-error"></p>
+                        </div>
+                    </div>
+                    <button class="btn-submit" type="submit">Submit</button>
+                </form>
+
+                <div
+                    id="message-dialog"
+                    class="message-sent-dialog hidden-container"
+                >
+                    <div class="message-sent-header">
+                        <img
+                            class="message-sent-header-icon"
+                            alt="Checkmark icon"
+                        />
+                        <p class="message-sent-header-text">Message Sent!</p>
+                    </div>
+                    <p class="message-sent-body-text">
+                        Thanks for completing the form. We'll be in touch soon!
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="attribution">
+            Challenge by&nbsp;
+            <a
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by&nbsp;
+            <a href="https://github.com/ianwilk20">Ian Wilkinson</a>.
+        </footer>
+
+        <script>
+            form = document.getElementById('contact-form')
+            firstName = document.getElementById('first-name')
+            lastName = document.getElementById('last-name')
+            email = document.getElementById('email')
+            queryTypeGeneral = document.getElementById('query-type-general')
+            queryTypeSupport = document.getElementById('query-type-support')
+            message = document.getElementById('message')
+            consent = document.getElementById('comms-consent')
+            messageDialog = document.getElementById('message-dialog')
+
+            firstNameError = document.getElementById('first-name-error')
+            lastNameError = document.getElementById('last-name-error')
+            emailError = document.getElementById('email-error')
+            queryTypeError = document.getElementById('query-type-error')
+            messageError = document.getElementById('message-error')
+            consentError = document.getElementById('comms-consent-error')
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault()
+
+                validForm = true
+
+                // First Name Validation
+                if (
+                    firstName.value &&
+                    firstName.value.length >= firstName.minLength
+                ) {
+                    firstNameError.classList.remove('show-input-error')
+                    firstName.classList.remove('invalid-input')
+                    firstNameError.innerText = ''
+                } else {
+                    if (!firstName.value) {
+                        firstNameError.innerText = 'This field is required'
+                    } else if (firstName.value.length === 1) {
+                        firstNameError.innerText =
+                            'First Name must be longer than one character'
+                    }
+                    firstName.classList.add('invalid-input')
+                    firstNameError.classList.add('show-input-error')
+                    validForm = false
+                }
+
+                // Last Name Validation
+                if (
+                    lastName.value &&
+                    lastName.value.length >= lastName.minLength
+                ) {
+                    lastNameError.classList.remove('show-input-error')
+                    lastName.classList.remove('invalid-input')
+                    lastNameError.innerText = ''
+                } else {
+                    if (!lastName.value) {
+                        lastNameError.innerText = 'This field is required'
+                    } else if (lastName.value.length === 1) {
+                        lastNameError.innerText =
+                            'Last Name must be longer than one character'
+                    }
+                    lastName.classList.add('invalid-input')
+                    lastNameError.classList.add('show-input-error')
+                    validForm = false
+                }
+
+                // Email validation
+                if (email.value === '') {
+                    emailError.innerText = 'Please enter a valid email address'
+                    emailError.classList.add('show-input-error')
+                    email.classList.add('invalid-input')
+                    validForm = false
+                } else if (
+                    !RegExp(/[^@\s]+@[^@\s]+\.[^@\s]+/gm).test(
+                        email.value.toLowerCase()
+                    )
+                ) {
+                    emailError.innerText = 'Please enter a valid email address'
+                    emailError.classList.add('show-input-error')
+                    email.classList.add('invalid-input')
+                    validForm = false
+                } else {
+                    emailError.classList.remove('show-input-error')
+                    email.classList.remove('invalid-input')
+                    emailError.innerText = ''
+                }
+
+                // Query Type
+                if (queryTypeGeneral.checked || queryTypeSupport.checked) {
+                    queryTypeError.classList.remove('show-input-error')
+                    queryTypeError.innerText = ''
+                } else {
+                    queryTypeError.classList.add('show-input-error')
+                    queryTypeError.innerText = 'Please select a query type'
+                    validForm = false
+                }
+
+                // Message Validation
+                if (
+                    message.value &&
+                    message.value.length >= message.minLength
+                ) {
+                    messageError.classList.remove('show-input-error')
+                    messageError.innerText = ''
+                    message.classList.remove('invalid-input')
+                } else {
+                    if (!message.value) {
+                        messageError.innerText = 'This field is required'
+                    } else if (message.value.split(' ').length <= 5) {
+                        messageError.innerText =
+                            'Message must be longer than five words'
+                    }
+                    message.classList.add('invalid-input')
+                    messageError.classList.add('show-input-error')
+                    validForm = false
+                }
+
+                // Comms Consent
+                if (consent.checked) {
+                    consentError.classList.remove('show-input-error')
+                    consentError.innerText = ''
+                } else {
+                    consentError.classList.add('show-input-error')
+                    consentError.innerText =
+                        'To submit this form, please consent to being contacted'
+                    validForm = false
+                }
+
+                if (validForm) {
+                    setTimeout(function () {
+                        completeNotify()
+                    }, 500)
+                }
+            })
+
+            function completeNotify() {
+                messageDialog.classList.remove('hidden-container')
+                form.reset()
+                window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth',
+                })
+                setTimeout(function () {
+                    messageDialog.classList.add('hidden-container')
+                }, 4000)
+            }
+        </script>
+    </body>
+</html>
