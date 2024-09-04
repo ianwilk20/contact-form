@@ -47,7 +47,7 @@ Mobile:
 
 ### Links
 
-- [Solution URL](https://github.com/ianwilk20?tab=repositories)
+- [Solution URL](https://github.com/ianwilk20/contact-form)
 - [Live Site URL](https://contact-form-ianwilk20.netlify.app/design/)
 
 ## My process

@@ -47,7 +47,7 @@
                                     type="text"
                                     autocomplete="family-name"
                                     required
-                                    aria-minlength="2"
+                                    minlength="2"
                                     placeholder="Smith"
                                 />
                                 <p id="last-name-error"></p>
@@ -67,7 +67,7 @@
                             <p id="email-error"></p>
                         </div>
 
-                        <fieldset id="query-type" aria-required="true">
+                        <fieldset id="query-type">
                             <div class="input-container">
                                 <legend class="query-type">Query Type</legend>
                                 <div class="side-by-side-input-container">
@@ -105,7 +105,7 @@
                         </fieldset>
 
                         <div class="input-container">
-                            <label for="contact-message">Message</label>
+                            <label for="message">Message</label>
                             <textarea
                                 id="message"
                                 type="text"

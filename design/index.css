@@ -260,7 +260,7 @@ label[for='contact-first-name'],
 label[for='contact-last-name'],
 label[for='contact-email'],
 legend,
-label[for='contact-message'],
+label[for='message'],
 label[for='comms-consent'] {
     font-size: 0.9rem;
     color: var(--gray-900);
@@ -270,7 +270,7 @@ label[for='contact-first-name']::after,
 label[for='contact-last-name']::after,
 label[for='contact-email']::after,
 legend::after,
-label[for='contact-message']::after,
+label[for='message']::after,
 label[for='comms-consent']::after {
     content: ' *';
     color: var(--green-600);
@@ -409,5 +409,5 @@ input[data-autocompleted] {
 }
 
 .attribution a {
-    color: var(--green-600);
+    color: var(--dark-green);
 }
